@@ -20,6 +20,7 @@ export const Container = styled.div<ContainerProps>`
     animation-name: ${fade};
     animation-duration: ${$isRoleAssistant ? '0.5s' : '0'};
     animation-timing-function: linear;
+    max-width: -webkit-fill-available;
   `}
 `;
 
@@ -41,15 +42,25 @@ export const MessageWrapper = styled.div<MessageWrapperProps>`
 `;
 
 const receivedMessageStyle = css`
-  background-color: ${({ theme }) => theme.color.brand.background.weakest};
-  color: ${({ theme }) => theme.color.brand.text.default};
-  max-width: 542px;
+  background-color: ${({ theme }) => theme.color.brand.background.weak};
+  color: ${({ theme }) => theme.color.brand.text.strong};
+  width: 542px;
+  max-width: -webkit-fill-available;
+
+  @media (max-width: 872px) {
+    width: 334px;
+  }
 `;
 
 const sendedMessageStyle = css`
   background-color: ${({ theme }) => theme.color.brand.background.default};
   color: ${({ theme }) => theme.color.neutral.text.inverted};
-  max-width: 400px;
+  width: 400px;
+  max-width: -webkit-fill-available;
+
+  @media (max-width: 872px) {
+    width: 238px;
+  }
 `;
 
 export const Message = styled.div<StyledMessageProps>`

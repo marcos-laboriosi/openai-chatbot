@@ -15,6 +15,10 @@ export const Scroll = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+
+  @media (max-width: 872px) {
+    width: auto;
+  }
 `;
 
 export const ChatLog = styled.div`

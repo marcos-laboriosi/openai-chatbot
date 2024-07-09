@@ -16,10 +16,13 @@ export const Container = styled.div<ContainerProps>`
       background-image: url(${background});
       background-repeat: no-repeat;
       background-position: 50% calc(50% - ${theme.spacing.s16});
+
+      @media (max-width: 872px) {
+        background-image: url(${backgroundMobile});
+      }
     `}
 
   @media (max-width: 872px) {
-    background-image: url(${backgroundMobile});
     background-position: 50% calc(50% - 100px);
   }
 `;
@@ -38,6 +41,7 @@ export const SuggestionWrapper = styled.div`
     width: -webkit-fill-available;
     -ms-overflow-style: none;
     scrollbar-width: none;
+
     &::-webkit-scrollbar {
       display: none;
     }
