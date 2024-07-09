@@ -5,3 +5,4 @@ export * from './Header';
 export * from './InputBox';
 export * from './Message';
 export * from './SendButton';
+export * from './Suggestion';

@@ -37,12 +37,12 @@ export const theme = {
     brand: {
       background: {
         default: '#0074D9',
-        weakest: '#fcfcfc',
-        weak: '#101f78',
-        strong: '#010937',
+        weak: '#fcfcfc',
+        weakest: '#fff',
       },
       text: {
-        default: '#555555',
+        default: '#676F7E',
+        strong: '#555555',
       },
       border: {
         default: '#020f59',

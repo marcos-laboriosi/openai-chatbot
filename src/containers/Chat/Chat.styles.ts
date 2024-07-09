@@ -22,3 +22,12 @@ export const Container = styled.div<ContainerProps>`
     background-image: url(${backgroundMobile});
   }
 `;
+
+export const SuggestionWrapper = styled.div`
+  display: flex;
+  margin-bottom: ${({ theme }) => theme.spacing.s6};
+
+  & > *:not(:last-child) {
+    margin-right: ${({ theme }) => theme.spacing.s2};
+  }
+`;
