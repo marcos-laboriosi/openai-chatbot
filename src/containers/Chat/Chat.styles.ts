@@ -1,0 +1,24 @@
+import styled, { css } from 'styled-components';
+import background from '@assets/background.webp';
+import backgroundMobile from '@assets/background-mobile.webp';
+import { ContainerProps } from './Chat.types';
+
+export const Container = styled.div<ContainerProps>`
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 48px);
+  justify-content: end;
+  align-items: center;
+
+  ${({ theme, $isMessagesEmpty }) =>
+    $isMessagesEmpty &&
+    css`
+      background-image: url(${background});
+      background-repeat: no-repeat;
+      background-position: 50% calc(50% - ${theme.spacing.s16});
+    `}
+
+  @media (max-width: 872px) {
+    background-image: url(${backgroundMobile});
+  }
+`;
