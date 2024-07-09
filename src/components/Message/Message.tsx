@@ -1,8 +1,8 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import * as Styled from './Message.styles';
 import { MessageProps } from './Message.types';
-import { ReactComponent as UserProfileIcon } from '@assets/user-profile-icon.svg';
-import { ReactComponent as BotProfileIcon } from '@assets/bot-profile-icon.svg';
+import { Footer } from './Footer';
+import { ProfileIcon } from './ProfileIcon';
 
 export const Message: FC<MessageProps> = ({
   children,
@@ -10,24 +10,35 @@ export const Message: FC<MessageProps> = ({
   role,
   loading,
 }) => {
+  const [copied, setCopied] = useState(false);
   const isRoleAssistant = role === 'assistant';
+  const repliedTime = `${isRoleAssistant ? 'Replied at' : 'You at'} ${time}`;
+  const successIconDisplayDuration = 1000;
+
+  const handleClickCopy = () => {
+    setCopied(true);
+    navigator.clipboard.writeText(children);
+    setTimeout(() => setCopied(false), successIconDisplayDuration);
+  };
 
   return (
     <Styled.Container $isRoleAssistant={isRoleAssistant}>
-      {!loading && (
+      {!loading ? (
         <Styled.MessageWrapper $isRoleAssistant={isRoleAssistant}>
           <Styled.Message $isRoleAssistant={isRoleAssistant}>
             {children}
           </Styled.Message>
-          <Styled.Time>
-            {isRoleAssistant ? 'Replied at ' : 'You at '} {time}
-          </Styled.Time>
+          <Footer
+            copiedSuccessfully={copied}
+            repliedTime={repliedTime}
+            onClickCopy={handleClickCopy}
+            isRoleAssistant={isRoleAssistant}
+          />
         </Styled.MessageWrapper>
+      ) : (
+        <Styled.Loading data-testid='loading' />
       )}
-      {loading && (
-        <Styled.Loading data-testid='loading' $isFullyLoaded={!loading} />
-      )}
-      {isRoleAssistant ? <BotProfileIcon /> : <UserProfileIcon />}
+      <ProfileIcon isRoleAssistant={isRoleAssistant} />
     </Styled.Container>
   );
 };

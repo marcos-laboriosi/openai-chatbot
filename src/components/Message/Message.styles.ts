@@ -1,7 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 import {
   ContainerProps,
-  LoadingProps,
   MessageWrapperProps,
   StyledMessageProps,
 } from './Message.types';
@@ -64,12 +63,7 @@ export const Message = styled.div<StyledMessageProps>`
   `}
 `;
 
-export const Time = styled.span`
-  font-size: ${({ theme }) => theme.font.size.s2};
-  color: ${({ theme }) => theme.color.neutral.text.weak};
-`;
-
-export const Loading = styled(DefaultLoading)<LoadingProps>`
+export const Loading = styled(DefaultLoading)`
   display: flex;
   align-items: center;
   justify-content: center;
