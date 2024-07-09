@@ -30,4 +30,15 @@ export const SuggestionWrapper = styled.div`
   & > *:not(:last-child) {
     margin-right: ${({ theme }) => theme.spacing.s2};
   }
+
+  @media (max-width: 872px) {
+    overflow-x: scroll;
+    margin: ${({ theme }) => theme.spacing.s2};
+    width: -webkit-fill-available;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 `;

@@ -10,6 +10,10 @@ export const Container = styled.div`
   border-width: ${({ theme }) => theme.border.width.thinner};
   border-color: ${({ theme }) => theme.color.neutral.border.default};
   padding: ${({ theme }) => theme.spacing.s4};
+
+  @media (max-width: 872px) {
+    min-width: 205px;
+  }
 `;
 
 export const Text = styled.p`
