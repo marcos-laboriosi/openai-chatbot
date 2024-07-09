@@ -20,6 +20,7 @@ export const Container = styled.div<ContainerProps>`
 
   @media (max-width: 872px) {
     background-image: url(${backgroundMobile});
+    background-position: 50% calc(50% - 100px);
   }
 `;
 
