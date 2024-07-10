@@ -11,4 +11,5 @@ export type Messages = MessageItem[];
 
 export interface ChatLogProps {
   messages: Messages;
+  onReport: () => void;
 }

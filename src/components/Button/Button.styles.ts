@@ -1,37 +1,35 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { StyledButtonProps } from './Button.types';
 
-export const Button = styled.button`
+const primaryButtonSnippet = css`
+  background-color: ${({ theme }) => theme.color.brand.background.default};
+  color: ${({ theme }) => theme.color.brand.text.weakest};
+`;
+
+const secondaryButtonSnippet = css`
+  background-color: ${({ theme }) => theme.color.brand.background.weakest};
+  color: ${({ theme }) => theme.color.brand.text.default};
+  border-width: ${({ theme }) => theme.border.width.thinner};
+  border-color: ${({ theme }) => theme.color.neutral.border.default};
+  border-style: solid;
+`;
+
+export const Button = styled.button<StyledButtonProps>`
   display: flex;
   align-items: center;
   border: none;
   background: none;
   cursor: pointer;
-  height: 30px;
-  border-radius: ${({ theme }) => theme.border.radius.xlarge};
-  padding: 0 ${({ theme }) => theme.spacing.s2};
-  color: ${({ theme }) => theme.color.neutral.text.default};
-  font-size: ${({ theme }) => theme.font.size.s2};
+  height: 36px;
+  border-radius: ${({ theme }) => theme.border.radius.small};
+  padding: 0 ${({ theme }) => theme.spacing.s4};
+  font-size: ${({ theme }) => theme.font.size.s3};
+  font-weight: ${({ theme }) => theme.font.weight.medium};
+
+  ${({ $isPrimary }) =>
+    $isPrimary ? primaryButtonSnippet : secondaryButtonSnippet}
 
   &:hover {
-    background-color: ${({ theme }) => theme.color.neutral.background.weak};
-    & > div {
-      color: ${({ theme }) => theme.color.neutral.text.default};
-    }
+    opacity: 0.9;
   }
-
-  &:active {
-    background: none;
-    color: ${({ theme }) => theme.color.neutral.text.strong};
-    border-width: ${({ theme }) => theme.border.width.thinner};
-    border-color: ${({ theme }) => theme.color.neutral.border.weak};
-    border-style: solid;
-    & > div {
-      color: ${({ theme }) => theme.color.neutral.text.strong};
-    }
-  }
-`;
-
-export const IconWrapper = styled.div`
-  margin-right: ${({ theme }) => theme.spacing.s1};
-  color: ${({ theme }) => theme.color.neutral.icon.weak};
 `;

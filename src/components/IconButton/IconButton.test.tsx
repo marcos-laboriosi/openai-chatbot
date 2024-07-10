@@ -1,15 +1,20 @@
 import { screen } from '@testing-library/react';
 import { render } from '../../utils/tests';
-import { Button } from '.';
+import { IconButton } from '.';
+import DeleteIcon from '@assets/delete-icon.svg';
 import userEvent from '@testing-library/user-event';
 
 const onClickMock = jest.fn();
 
-describe('components/Button', () => {
+describe('components/IconButton', () => {
   const user = userEvent.setup();
 
   it('should render', () => {
-    render(<Button onClick={onClickMock}>Lorem ipsum</Button>);
+    render(
+      <IconButton onClick={onClickMock} icon={<DeleteIcon />}>
+        Lorem ipsum
+      </IconButton>
+    );
 
     const button = screen.queryByRole('button');
 
@@ -17,7 +22,11 @@ describe('components/Button', () => {
   });
 
   it('should trigger click', async () => {
-    render(<Button onClick={onClickMock}>Lorem ipsum</Button>);
+    render(
+      <IconButton onClick={onClickMock} icon={<DeleteIcon />}>
+        Lorem ipsum
+      </IconButton>
+    );
 
     const button = screen.queryByRole('button')!;
 

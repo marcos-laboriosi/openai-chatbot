@@ -5,6 +5,7 @@ import { Footer } from './Footer';
 import { ProfileIcon } from './ProfileIcon';
 
 export const Message: FC<MessageProps> = ({
+  onReport,
   children,
   time,
   role,
@@ -31,7 +32,8 @@ export const Message: FC<MessageProps> = ({
           <Footer
             copiedSuccessfully={copied}
             repliedTime={repliedTime}
-            onClickCopy={handleClickCopy}
+            onCopy={handleClickCopy}
+            onReport={onReport}
             isRoleAssistant={isRoleAssistant}
           />
         </Styled.MessageWrapper>

@@ -43,6 +43,8 @@ export const theme = {
       text: {
         default: '#676F7E',
         strong: '#555555',
+        weak: '#D1D5DB',
+        weakest: '#F6F6F6',
       },
       border: {
         default: '#020f59',
@@ -74,7 +76,7 @@ export const theme = {
         default: '#e3e3e3',
         weak: '#F4F4F4',
         strong: '#9b9b9b',
-        inverted: '#17181C',
+        inverted: '#000000',
       },
       text: {
         weak: '#9b9b9b',

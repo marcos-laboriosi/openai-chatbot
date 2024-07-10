@@ -3,7 +3,7 @@ import { Message } from '@components';
 import * as Styled from './ChatLog.styles';
 import { ChatLogProps } from './ChatLog.types';
 
-export const ChatLog: FC<ChatLogProps> = ({ messages }) => {
+export const ChatLog: FC<ChatLogProps> = ({ messages, onReport }) => {
   return (
     <Styled.Scroll>
       <Styled.ChatLog role='log'>
@@ -13,6 +13,7 @@ export const ChatLog: FC<ChatLogProps> = ({ messages }) => {
             time={message.time}
             role={message.role}
             loading={message.loading}
+            onReport={onReport}
           >
             {message.content}
           </Message>

@@ -5,6 +5,7 @@ export interface MessageProps {
   time: string;
   role: MessageRole;
   loading: boolean;
+  onReport: () => void;
 }
 
 export interface ContainerProps {

@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { ChatLog, InputBox, Suggestion } from '@components';
+import { ChatLog, InputBox, Suggestion, TicketModal } from '@components';
 import { sendUserMessage, store } from '@store/messages';
 import { RootState } from '@store/types';
 import { clearInputBox } from '@utils/chat';
@@ -13,10 +13,14 @@ import * as Styled from './Chat.styles';
 
 export const Chat: FC<ChatProps> = () => {
   const [inputBoxValue, setInputBoxValue] = useState('');
+  const [isModalOpen, setModalOpen] = useState(false);
   const messages = useSelector((state: RootState) => state.messages);
   const isMessagesEmpty = !messages.length;
 
   useMessageHandlerAI(messages);
+
+  const handleCloseModal = () => setModalOpen(false);
+  const handleReport = () => setModalOpen(true);
 
   const handleSubmit = () => {
     store.dispatch(sendUserMessage(inputBoxValue));
@@ -27,33 +31,41 @@ export const Chat: FC<ChatProps> = () => {
     store.dispatch(sendUserMessage(text));
 
   return (
-    <Styled.Container $isMessagesEmpty={isMessagesEmpty} role='main'>
-      <ChatLog messages={messages} />
-      {isMessagesEmpty && (
-        <Styled.SuggestionWrapper>
-          <Suggestion
-            icon={<ArtificialIntelligenceIcon />}
-            text='Me diga sobre a diferença de um modelo de linguagem generalista e um modelo especializado.'
-            onClick={handleClickSuggestion}
-          />
-          <Suggestion
-            icon={<EngineIcon />}
-            text='Poderia me explicar melhor o processo de Fine-Tuning e um modelo de linguagem?'
-            onClick={handleClickSuggestion}
-          />
-          <Suggestion
-            icon={<FunctionIcon />}
-            text='O que seria uma function e como ela impacta uma inteligência artificial?'
-            onClick={handleClickSuggestion}
-          />
-        </Styled.SuggestionWrapper>
-      )}
-      <InputBox
-        id='input-box'
-        onInput={setInputBoxValue}
-        submit={handleSubmit}
-        value={inputBoxValue}
+    <>
+      <Styled.Container $isMessagesEmpty={isMessagesEmpty} role='main'>
+        <ChatLog messages={messages} onReport={handleReport} />
+        {isMessagesEmpty && (
+          <Styled.SuggestionWrapper>
+            <Suggestion
+              icon={<ArtificialIntelligenceIcon />}
+              text='Me diga sobre a diferença de um modelo de linguagem generalista e um modelo especializado.'
+              onClick={handleClickSuggestion}
+            />
+            <Suggestion
+              icon={<EngineIcon />}
+              text='Poderia me explicar melhor o processo de Fine-Tuning e um modelo de linguagem?'
+              onClick={handleClickSuggestion}
+            />
+            <Suggestion
+              icon={<FunctionIcon />}
+              text='O que seria uma function e como ela impacta uma inteligência artificial?'
+              onClick={handleClickSuggestion}
+            />
+          </Styled.SuggestionWrapper>
+        )}
+        <InputBox
+          id='input-box'
+          onInput={setInputBoxValue}
+          submit={handleSubmit}
+          value={inputBoxValue}
+        />
+      </Styled.Container>
+      <TicketModal
+        open={isModalOpen}
+        onCancel={handleCloseModal}
+        onClose={handleCloseModal}
+        onSubmit={handleCloseModal}
       />
-    </Styled.Container>
+    </>
   );
 };

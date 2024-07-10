@@ -4,13 +4,19 @@ import App from './App.tsx';
 
 const MOCK = import.meta.env.VITE_MOCK;
 
-if (MOCK) {
+async function enableMocking() {
+  if (!MOCK) {
+    return;
+  }
+
   const { worker } = await import('@mocks');
-  await worker.start();
+  return worker.start();
 }
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+enableMocking().then(() => {
+  ReactDOM.createRoot(document.getElementById('root')!).render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+});

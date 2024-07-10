@@ -12,6 +12,7 @@ function App() {
         <GlobalStyle />
         <Header />
         <Chat />
+        <div id='overlays-portal' />
       </Provider>
     </ThemeProvider>
   );
