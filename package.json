@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "mock": "cross-env VITE_MOCK=TRUE && vite",
+    "mock": "cross-env VITE_MOCK=TRUE vite",
     "build": "tsc -b && vite build",
     "test": "jest",
     "search": "tsc --traceResolution",
