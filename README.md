@@ -1,7 +1,8 @@
 
 # Teste Frontend
 A chatbot integrated with OpenAI
-![devices](https://i.ibb.co/wWJcMhQ/3-devices-black.png)
+
+![screen-capture](https://github.com/marcos-laboriosi/openai-chatbot/assets/174369094/34344bb2-d4fa-4be3-9b45-1bf1114d1968)
 
 # How to start
 Install the dependencies by:
