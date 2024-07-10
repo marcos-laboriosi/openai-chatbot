@@ -16,19 +16,19 @@ export const Modal: FC<ModalProps> = ({
   onClose,
 }) => {
   const [domReady, setDomReady] = useState(false);
-  const backdropReference = useRef<HTMLDivElement>(null);
+  const modalReference = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setDomReady(true);
   }, []);
 
-  useOnClickOutside(backdropReference, onClose);
+  useOnClickOutside(modalReference, onClose);
 
   return domReady
     ? createPortal(
         <>
-          <Styled.Backdrop ref={backdropReference} />
-          <Styled.Modal>
+          <Styled.Backdrop />
+          <Styled.Modal ref={modalReference}>
             <Styled.Header>
               <span>{title}</span>
               <CloseIcon onClick={onClose} />
